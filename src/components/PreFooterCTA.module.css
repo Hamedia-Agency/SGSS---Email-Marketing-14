@@ -1,0 +1,125 @@
+.preFooter {
+  background: linear-gradient(135deg, #1d2c48 0%, #263659 100%);
+  color: #ffffff;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid #fecf31;
+}
+
+.preFooterBg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: radial-gradient(circle at 80% 20%, rgba(254, 207, 49, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.preFooterWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 860px;
+  position: relative;
+  z-index: 2;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(254, 207, 49, 0.15);
+  color: #fecf31;
+  border: 1px solid rgba(254, 207, 49, 0.3);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.titleAccent {
+  color: #fecf31;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: #c4c4c4;
+  line-height: 1.6;
+  margin-bottom: 36px;
+  max-width: 720px;
+}
+
+.btnGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.btnPrimary {
+  background-color: #fecf31;
+  color: #1d2c48;
+  font-weight: 800;
+  font-size: 1.05rem;
+  padding: 16px 36px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(254, 207, 49, 0.35);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btnPrimary:hover {
+  background-color: #e8bb1e;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(254, 207, 49, 0.5);
+}
+
+.btnSecondary {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 16px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btnSecondary:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #fecf31;
+  color: #fecf31;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.85rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+}

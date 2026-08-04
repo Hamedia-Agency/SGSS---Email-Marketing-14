@@ -1,0 +1,243 @@
+.simulator {
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(29, 44, 72, 0.12);
+  box-shadow: 0 10px 40px rgba(29, 44, 72, 0.12);
+  overflow: hidden;
+  margin-top: 32px;
+}
+
+.simHeader {
+  background: linear-gradient(135deg, #1d2c48 0%, #263659 100%);
+  color: #ffffff;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-bottom: 2px solid #fecf31;
+}
+
+.simTitle {
+  font-size: 1.2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.simTitleIcon {
+  color: #fecf31;
+}
+
+.viewToggle {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.toggleBtn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: #c4c4c4;
+  background: transparent;
+}
+
+.toggleBtnActive {
+  background-color: #fecf31;
+  color: #1d2c48;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.zoneTabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: #f8f9fc;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.zoneTab {
+  padding: 16px 12px;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #929292;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.zoneTab:hover {
+  color: #1d2c48;
+  background-color: rgba(29, 44, 72, 0.03);
+}
+
+.zoneTabActive {
+  color: #1d2c48;
+  font-weight: 800;
+  border-bottom-color: #fecf31;
+  background-color: #ffffff;
+}
+
+.simBody {
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+}
+
+.perspectiveCard {
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.dailyViewCard {
+  background-color: #f8f9fc;
+  border: 1px solid #c4c4c4;
+}
+
+.auditViewCard {
+  background: linear-gradient(135deg, #1d2c48 0%, #152238 100%);
+  color: #ffffff;
+  border: 1px solid #fecf31;
+  box-shadow: 0 8px 30px rgba(254, 207, 49, 0.15);
+}
+
+.cardBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.775rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.dailyBadge {
+  background-color: rgba(146, 146, 146, 0.15);
+  color: #2a2829;
+}
+
+.auditBadge {
+  background-color: rgba(254, 207, 49, 0.2);
+  color: #fecf31;
+  border: 1px solid rgba(254, 207, 49, 0.4);
+}
+
+.cardTitle {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.cardDesc {
+  font-size: 0.925rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.pointList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pointItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.riskGauge {
+  background-color: #f8f9fc;
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid #c4c4c4;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.meterHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.meterLabel {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1d2c48;
+}
+
+.meterVal {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.meterTrack {
+  height: 12px;
+  background-color: #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.meterFill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.5s ease, background-color 0.5s ease;
+}
+
+.solutionBox {
+  background-color: rgba(254, 207, 49, 0.15);
+  border-left: 4px solid #fecf31;
+  padding: 16px;
+  border-radius: 0 10px 10px 0;
+}
+
+.solutionTitle {
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: #1d2c48;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.solutionDesc {
+  font-size: 0.825rem;
+  color: #2a2829;
+  line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+  .zoneTabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .simBody {
+    grid-template-columns: 1fr;
+  }
+}
