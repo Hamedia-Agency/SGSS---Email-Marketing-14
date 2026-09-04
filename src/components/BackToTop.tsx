@@ -1,30 +1,38 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { ArrowUp } from "lucide-react";
+import { useState, useEffect } from "react";
 import styles from "./BackToTop.module.css";
 
 export default function BackToTop() {
-  const [visible, setVisible] = useState(false);
-  const [scrollPercent, setScrollPercent] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const currentScroll = window.scrollY;
+      const totalScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       
-      if (currentScroll > 300) {
-        setVisible(true);
-      } else {
-        setVisible(false);
+      let currentProgress = 0;
+      if (windowHeight > 0) {
+        currentProgress = (totalScroll / windowHeight) * 100;
       }
 
-      if (totalHeight > 0) {
-        setScrollPercent((currentScroll / totalHeight) * 100);
+      if (currentProgress > 100) currentProgress = 100;
+      if (currentProgress < 0) currentProgress = 0;
+
+      if (totalScroll > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
       }
+
+      setScrollProgress(currentProgress);
     };
 
     window.addEventListener("scroll", handleScroll);
+    // Initial check in case user is already scrolled down on load
+    handleScroll();
+    
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -35,30 +43,32 @@ export default function BackToTop() {
     });
   };
 
-  const radius = 21;
-  const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (scrollPercent / 100) * circumference;
-
   return (
-    <button
+    <div
+      className={`${styles.backToTopContainer} ${isVisible ? styles.visible : ""}`}
       onClick={scrollToTop}
-      className={`${styles.backToTop} ${visible ? styles.backToTopVisible : ""}`}
-      aria-label="Back to top"
-      id="btn-back-to-top"
+      aria-label="Scroll to top"
+      style={{
+        background: `conic-gradient(var(--color-dark-blue) ${scrollProgress}%, var(--color-gray-light) ${scrollProgress}%)`,
+      }}
     >
-      <svg className={styles.progressRing}>
-        <circle
-          className={styles.progressRingCircle}
-          r={radius}
-          cx="24"
-          cy="24"
-          style={{
-            strokeDasharray: circumference,
-            strokeDashoffset: strokeDashoffset,
-          }}
-        />
-      </svg>
-      <ArrowUp size={20} strokeWidth={2.5} />
-    </button>
+      <div className={styles.innerCircle}>
+        <div className={styles.iconContainer}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M18 15l-6-6-6 6" />
+          </svg>
+        </div>
+      </div>
+    </div>
   );
 }

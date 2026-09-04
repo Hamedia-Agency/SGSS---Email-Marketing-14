@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Secure Guard Security Services | Site Risk & Security Gap Assessment",
+  title: "Secure Guard Security Services | Security Gap Assessment",
   description:
-    "Uncover hidden property vulnerabilities with a professional security assessment. SGSS offers tailored security plans, mobile patrols, active monitoring, and access control in Southern California.",
+    "Discover hidden property vulnerabilities with a professional security assessment. We provide tailored plans, patrols, and monitoring in Southern California.",
   keywords: [
     "Security Assessment",
     "Security Gaps",
