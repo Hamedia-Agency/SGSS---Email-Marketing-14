@@ -21,7 +21,7 @@ export default function HomePage() {
       <section className={styles.hero} id="hero">
         <div className={styles.heroBg}>
           <Image
-            src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/em10-1.webp"
+            src="https://cms.secureguardservices.com/wp-content/uploads/2026/09/14-1.png"
             alt="Site Vulnerability Audit"
             fill
             className={styles.heroBgImg}
@@ -83,7 +83,7 @@ export default function HomePage() {
           <div className={styles.addonGrid}>
             <div className={styles.addonImageCol}>
               <Image 
-                src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/em10-2.webp" 
+                src="https://cms.secureguardservices.com/wp-content/uploads/2026/09/14-3.png" 
                 alt="Evaluating Property Movement" 
                 width={500} 
                 height={400} 
@@ -134,10 +134,10 @@ export default function HomePage() {
           <div className={styles.addonGrid}>
             <div className={styles.addonImageCol}>
               <Image 
-                src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/em8-1-1.webp" 
+                src="https://cms.secureguardservices.com/wp-content/uploads/2026/09/14-5.png" 
                 alt="Officer viewing dashboard" 
                 width={500} 
-                height={400} 
+                height={450} 
                 className={styles.addonImage} 
                 style={{ borderRadius: "12px", objectFit: "cover" }}
               />
@@ -164,7 +164,7 @@ export default function HomePage() {
           <div className={styles.addonGrid} style={{ gridTemplateColumns: "1fr 1fr", direction: "rtl" }}>
             <div className={styles.addonImageCol} style={{ direction: "ltr" }}>
               <Image 
-                src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/em8-1-1.webp" 
+                src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/1009dc3a-1d49-4175-9594-aefe78b536fe.png" 
                 alt="SecureTrack Platform" 
                 width={500} 
                 height={400} 
@@ -209,7 +209,7 @@ export default function HomePage() {
           <div className={styles.floatingImageGrid}>
             <div className={styles.floatingImageWrapper}>
               <Image 
-                src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/plbs.webp" 
+                src="https://cms.secureguardservices.com/wp-content/uploads/2026/09/14-6.png" 
                 alt="Security officers conducting a site assessment" 
                 fill 
                 style={{ objectFit: "cover" }}
