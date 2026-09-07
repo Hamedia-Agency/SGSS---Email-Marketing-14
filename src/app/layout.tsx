@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Secure Guard Security Services | Security Gap Assessment",
   description:
-    "Discover hidden property vulnerabilities with a professional security assessment. We provide tailored plans, patrols, and monitoring in Southern California.",
+    "Discover hidden property vulnerabilities with a professional security assessment. We offer tailored plans, patrols, and monitoring in CA.",
   keywords: [
     "Security Assessment",
     "Security Gaps",
