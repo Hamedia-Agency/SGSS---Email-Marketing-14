@@ -1,115 +1,78 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { 
-  Map, 
-  Search, 
-  ClipboardCheck, 
-  Target, 
-  Settings,
-  Shield,
-  Eye,
-  FileSearch,
-  Crosshair,
-  Wrench
-} from "lucide-react";
-import styles from "./ProcessExplorer.module.css";
+import React, { useState } from 'react';
+import styles from './ProcessExplorer.module.css';
+import { FileSearch, Map, GitBranch, DollarSign, Target } from 'lucide-react';
 
 const steps = [
   {
-    id: "step-1",
-    tabTitle: "Map Operations",
-    badge: "Operational Baseline",
-    title: "Map Property Operations",
-    desc: "Reviewing your site type, operating schedules, traffic flows, occupancy levels, and historical security incidents to establish a complete operational baseline before evaluating specific risks.",
-    tabIcon: Map,
-    panelIcon: Shield,
-    panelText: "BASELINE"
+    id: '01',
+    title: 'Audit Current Setup',
+    icon: <FileSearch size={24} />,
+    description: 'Examine your active guard schedules, post orders, patrol logs, access management processes, and security technology. This creates an exact baseline of what resources you are currently paying for, where officers are stationed, and how your existing budget is allocated across daily operations.'
   },
   {
-    id: "step-2",
-    tabTitle: "Inspect Environment",
-    badge: "Physical Assessment",
-    title: "Inspect the Physical Environment",
-    desc: "Evaluates your physical boundaries, entrances, perimeters, parking zones, loading bays, and storage areas to pinpoint physical blind spots, lighting gaps, and access vulnerabilities across the property.",
-    tabIcon: Search,
-    panelIcon: Eye,
-    panelText: "INSPECT"
+    id: '02',
+    title: 'Map Daily Workflows',
+    icon: <Map size={24} />,
+    description: 'Track how employees, visitors, contractors, and delivery vehicles move through your property over a 24-hour cycle. By analyzing shift changes, loading dock activity, opening and closing procedures, and overnight lulls, we determine when your site is bustling and when vulnerabilities naturally spike.'
   },
   {
-    id: "step-3",
-    tabTitle: "Audit Resources",
-    badge: "Current Setup",
-    title: "Audit Existing Security Resources",
-    desc: "Analyze how your current setup, including on-site guards, patrol schedules, camera coverage, access protocols, and reporting workflows, is actively performing relative to your actual daily risks.",
-    tabIcon: ClipboardCheck,
-    panelIcon: FileSearch,
-    panelText: "AUDIT"
+    id: '03',
+    title: 'Analyze Gaps & Overlaps',
+    icon: <GitBranch size={24} />,
+    description: 'Cross-reference your current guard schedule directly against your site\'s physical traffic patterns. This exposes operational mismatches—such as paying for static guards during low-risk periods or leaving high-traffic delivery windows and dark perimeters without adequate oversight.'
   },
   {
-    id: "step-4",
-    tabTitle: "Pinpoint Vulnerabilities",
-    badge: "Risk Analysis",
-    title: "Pinpoint & Prioritize Vulnerabilities",
-    desc: "Categorize and rank identified security gaps based on location, likelihood, and operational impact, allowing you to address critical threats first rather than treating every observation as equally urgent.",
-    tabIcon: Target,
-    panelIcon: Crosshair,
-    panelText: "PRIORITIZE"
+    id: '04',
+    title: 'Realign the Budget',
+    icon: <DollarSign size={24} />,
+    description: 'Evaluate every dollar spent against your property\'s actual risk priorities. Instead of simply cutting hours or adding new expenses, we identify underutilized services and reallocate existing funds directly toward high-vulnerability times and locations that require immediate protection.'
   },
   {
-    id: "step-5",
-    tabTitle: "Deliver Improvements",
-    badge: "Strategy",
-    title: "Deliver Actionable Improvements",
-    desc: "Provide practical, targeted recommendations, ranging from minor patrol route tweaks and procedural updates to camera repositioning or hybrid technology integration, designed to strengthen your security program.",
-    tabIcon: Settings,
-    panelIcon: Wrench,
-    panelText: "ACTION"
+    id: '05',
+    title: 'Execute Custom Strategy',
+    icon: <Target size={24} />,
+    description: 'Deliver a clear, actionable plan to optimize your security footprint. This includes refined officer shift schedules, updated post orders, targeted mobile patrol routes, or hybrid camera integration—ensuring your security program is streamlined, responsive, and aligned with how your site actually operates.'
   }
 ];
 
-export default function ProcessExplorer() {
-  const [activeStepId, setActiveStepId] = useState(steps[0].id);
-
-  const activeStep = steps.find((s) => s.id === activeStepId) || steps[0];
-  const PanelIcon = activeStep.panelIcon;
+export const ProcessExplorer = () => {
+  const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <div className={styles.explorerContainer}>
-      {/* Left Tabs */}
-      <div className={styles.tabsList}>
-        {steps.map((step) => {
-          const isActive = step.id === activeStepId;
-          const TabIcon = step.tabIcon;
-          
-          return (
-            <button
-              key={step.id}
-              className={`${styles.tabButton} ${isActive ? styles.activeTab : ""}`}
-              onClick={() => setActiveStepId(step.id)}
-            >
-              <div className={styles.tabIconWrapper}>
-                <TabIcon size={20} strokeWidth={isActive ? 2.5 : 2} />
-              </div>
-              <span className={styles.tabTitle}>{step.tabTitle}</span>
-            </button>
-          );
-        })}
+    <div className={styles.processContainer}>
+      <div className={styles.processNavigation}>
+        {steps.map((step, index) => (
+          <button
+            key={step.id}
+            className={`${styles.processTab} ${index === activeStep ? styles.activeTab : ''}`}
+            onClick={() => setActiveStep(index)}
+          >
+            <span className={styles.tabNumber}>{step.id}</span>
+            <span className={styles.tabTitle}>{step.title}</span>
+          </button>
+        ))}
       </div>
-
-      {/* Right Content */}
-      <div className={styles.contentPanel}>
-        <div className={styles.textContent}>
-          <div className={styles.badge}>{activeStep.badge}</div>
-          <h3 className={styles.contentTitle}>{activeStep.title}</h3>
-          <p className={styles.contentDesc}>{activeStep.desc}</p>
-        </div>
-        
-        <div className={styles.iconPanel}>
-          <PanelIcon size={64} strokeWidth={1.5} className={styles.iconPanelIcon} />
-          <span className={styles.iconPanelText}>{activeStep.panelText}</span>
-        </div>
+      
+      <div className={styles.processContentArea}>
+        {steps.map((step, index) => (
+          <div 
+            key={step.id}
+            className={`${styles.processPanel} ${index === activeStep ? styles.activePanel : ''}`}
+          >
+            <div className={styles.panelHeader}>
+              <div className={styles.panelIconWrap}>
+                {step.icon}
+              </div>
+              <h3 className={styles.panelTitle}>
+                <span className={styles.panelNumber}>{step.id}.</span> {step.title}
+              </h3>
+            </div>
+            <p className={styles.panelDescription}>{step.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
-}
+};

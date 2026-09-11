@@ -1,28 +1,32 @@
-import ProcessExplorer from "@/components/ProcessExplorer";
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { PreFooterCTA } from "@/components/PreFooterCTA";
-import { PerformanceReviewForm } from '@/components/PerformanceReviewForm';
-import EvaluationCarousel from "@/components/EvaluationCarousel";
-import ParticleMesh from "@/components/ParticleMesh";
-import FloatingShapes from "@/components/FloatingShapes";
-import FAQAccordion from "@/components/FAQAccordion";
+
+import { ProcessExplorer } from "@/components/ProcessExplorer";
+import { FAQAccordion } from "@/components/FAQAccordion";
 import { CoverageSection } from "@/components/CoverageSection";
+import { 
+  ShieldCheck, 
+  Car, 
+  Video, 
+  Sun, 
+  Smartphone
+} from "lucide-react";
 
 export default function HomePage() {
   return (
     <main className={styles.main}>
       <Navbar />
 
-      {/* ===== SECTION 1: HERO ===== */}
+      {/* ===== 1. HERO (DARK) ===== */}
       <section className={styles.hero} id="hero">
         <div className={styles.heroBg}>
           <Image
-            src="https://cms.secureguardservices.com/wp-content/uploads/2026/09/14-1.png"
-            alt="Site Vulnerability Audit"
+            src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/BG-scaled.webp"
+            alt="Security Cost Optimization"
             fill
             className={styles.heroBgImg}
             priority
@@ -34,23 +38,21 @@ export default function HomePage() {
           <div className={styles.heroContent}>
             <div className={styles.heroBadge} id="hero-badge">
               <span className={styles.heroBadgeDot} />
-              Proactive Threat Identification
+              Strategic Budget Alignment
             </div>
             <h1 className={styles.heroTitle} id="hero-title">
-              Site Vulnerability <span className={styles.heroTitleAccent}>Audit</span>
+              Security Cost <span className={styles.heroTitleAccent}>Optimization</span>
             </h1>
             <p className={styles.heroSubtitle}>
-              Secure Guard identifies hidden security risks, from unsecured secondary entrances and dark parking zones to unmonitored loading docks and predictable patrol routes, before an incident occurs. Secure Guard conducts comprehensive site vulnerability audits that evaluate how your property functions as an interconnected system rather than inspecting isolated equipment.
+              Secure Guard Security Services conducts operational security reviews designed to identify where coverage may be misaligned with the way a property actually operates and where the security budget may be better allocated.
             </p>
             <div className={styles.heroCtas}>
               <a 
-                href="https://www.secureguardservices.com/contact" 
+                href="#prefooter-cta" 
                 className={styles.btnPrimary} 
                 id="hero-cta-primary"
-                target="_blank"
-                rel="noopener noreferrer"
               >
-                Request a Site Audit
+                Get a Security Assessment
               </a>
             </div>
           </div>
@@ -60,202 +62,179 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== SECTION 2: What Secure Guard Evaluates (Carousel) ===== */}
-      <section className={styles.section} id="evaluates" style={{ background: "var(--color-bg, #ffffff)", padding: "100px 0" }}>
+      {/* ===== 2. VULNERABILITY (LIGHT) ===== */}
+      <section className={styles.section} id="vulnerability">
         <div className="container">
-          <div className={styles.sectionHeader} style={{ maxWidth: "100%" }}>
-            <span className={styles.sectionTag}>Comprehensive Review</span>
-            <h2 className={styles.sectionTitle}>
-              What Secure Guard Evaluates
-            </h2>
-            <p className={styles.bodyText} style={{ maxWidth: "100%", textAlign: "center" }}>
-              We analyze every potential vulnerability across your facility, ensuring physical safeguards and technological tools work together to build an impenetrable defense.
-            </p>
-          </div>
-
-          <EvaluationCarousel />
-        </div>
-      </section>
-
-      {/* ===== SECTION 3: Evaluating Property Movement ===== */}
-      <section className={styles.section} id="movement" style={{ background: "var(--color-dark-blue, #1d2c48)" }}>
-        <div className="container">
-          <div className={styles.addonGrid}>
-            <div className={styles.addonImageCol}>
+          <div className={styles.splitGrid} style={{ marginBottom: '0', alignItems: 'center' }}>
+            <div className={styles.splitImageWrapper} style={{ height: '100%', minHeight: '400px' }}>
               <Image 
-                src="https://cms.secureguardservices.com/wp-content/uploads/2026/09/14-3.png" 
-                alt="Evaluating Property Movement" 
-                width={500} 
-                height={400} 
-                className={styles.addonImage} 
-                style={{ borderRadius: "12px", objectFit: "cover" }}
+                src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/Town-1.webp" 
+                alt="Security Coverage Shortfalls" 
+                fill
+                className={styles.splitImage}
               />
             </div>
-            <div className={styles.addonContent}>
-              <div className={styles.sectionHeader} style={{ margin: "0", textAlign: "left" }}>
-                <span className={styles.sectionTag}>Traffic & Operations</span>
-                <h2 className={styles.sectionTitle} style={{ marginBottom: "16px", color: "var(--color-white, #ffffff)" }}>
-                  Evaluating Property Movement
-                </h2>
-              </div>
-              <p className={styles.bodyText} style={{ color: "rgba(255, 255, 255, 0.85)" }}>
-                Secure Guard analyzes how employees, visitors, contractors, and delivery vehicles navigate your site to uncover where unauthorized activity could blend into daily operations. Shared entryways, busy service bays, and unmanaged visitor pathways often make foot and vehicle traffic difficult to regulate, creating subtle vulnerabilities during peak operational hours.
-              </p>
-              <p className={styles.bodyText} style={{ color: "rgba(255, 255, 255, 0.85)" }}>
-                By mapping these movement patterns against your site's physical layout, we pinpoint exactly where your property requires stronger access controls, refined visitor check-in workflows, targeted patrol coverage, or live video monitoring to maintain complete operational oversight.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== SECTION 4: Connecting Your Security System (Escalation Box) ===== */}
-      <section className={styles.contactSection} id="connecting">
-        <div className={`container ${styles.contactContainer}`}>
-          <div className={styles.contactContentPanel}>
-            <div className={styles.sectionHeader} style={{ margin: "0 0 24px 0", textAlign: "left" }}>
-              <span className={styles.sectionTag} style={{ color: "#b89000", background: "rgba(254, 207, 49, 0.13)", borderColor: "rgba(254, 207, 49, 0.35)" }}>Information Flow</span>
-              <h2 className={styles.sectionTitle} style={{ marginBottom: "16px", color: "var(--color-white)" }}>
-                Connecting Your Security System
+            <div className={styles.sectionHeaderLeft} style={{ marginBottom: 0 }}>
+              <span className={styles.sectionTag}>Coverage Gaps</span>
+              <h2 className={styles.sectionTitle}>
+                Where Security Coverage Can Fall Short
               </h2>
-            </div>
-            <p className={styles.bodyText} style={{ color: "rgba(255, 255, 255, 0.9)" }}>
-              Secure Guard evaluates how information flows between your personnel and technology, analyzing how incidents are escalated, how patrol activity is logged, and how existing protocols respond under pressure.
-            </p>
-            <p className={styles.bodyText} style={{ color: "rgba(255, 255, 255, 0.9)", marginBottom: 0 }}>
-              By unifying standalone security elements into a synchronized operational network, we eliminate communication gaps and ensure your guards, technology, and procedures work together seamlessly when an incident occurs.
-            </p>
-          </div>
-        </div>
-      </section>
-      {/* ===== SECTION 5: How Services Work Together (Project 8 Layout) ===== */}
-      <section className={styles.section} id="services" style={{ background: "var(--color-dark-blue, #1d2c48)" }}>
-        <div className="container">
-          <div className={styles.addonGrid}>
-            <div className={styles.addonImageCol}>
-              <Image 
-                src="https://cms.secureguardservices.com/wp-content/uploads/2026/09/14-5.png" 
-                alt="Officer viewing dashboard" 
-                width={500} 
-                height={450} 
-                className={styles.addonImage} 
-                style={{ borderRadius: "12px", objectFit: "cover" }}
-              />
-            </div>
-            <div className={styles.addonContent}>
-              <div className={styles.sectionHeader} style={{ margin: "0", textAlign: "left" }}>
-                <span className={styles.sectionTag}>Unified Defense</span>
-                <h2 className={styles.sectionTitle} style={{ marginBottom: "16px", color: "var(--color-white, #ffffff)" }}>
-                  How Services Work Together
-                </h2>
-              </div>
-              <p className={styles.bodyText} style={{ color: "rgba(255, 255, 255, 0.85)" }}>
-                Secure Guard combines physical personnel, electronic surveillance, and centralized management into a unified defense network. Officers manage fixed access points, while mobile patrols perform randomized checks across outer perimeters and parking areas. Concurrently, live video monitoring and surveillance towers maintain constant visual coverage over expansive or low-light zones. Central dispatch links these layers by analyzing surveillance data and routing field personnel to specific areas, ensuring every service directly fills the operational gaps of the others.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      {/* ===== SECTION 6: SecureTrack (Split Pane) ===== */}
-      <section className={styles.section} id="securetrack" style={{ background: "var(--color-bg-alt, #f7f9fc)" }}>
-        <div className="container">
-          <div className={styles.addonGrid} style={{ gridTemplateColumns: "1fr 1fr", direction: "rtl" }}>
-            <div className={styles.addonImageCol} style={{ direction: "ltr" }}>
-              <Image 
-                src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/1009dc3a-1d49-4175-9594-aefe78b536fe.png" 
-                alt="SecureTrack Platform" 
-                width={500} 
-                height={400} 
-                className={styles.addonImage} 
-                style={{ borderRadius: "12px", objectFit: "cover" }}
-              />
-            </div>
-            <div className={styles.addonContent} style={{ direction: "ltr" }}>
-              <div className={styles.sectionHeader} style={{ margin: "0", textAlign: "left" }}>
-                <span className={styles.sectionTag}>Digital Accountability</span>
-                <h2 className={styles.sectionTitle} style={{ marginBottom: "16px" }}>
-                  SecureTrack
-                </h2>
-              </div>
               <p className={styles.bodyText}>
-                SecureTrack is the central management platform that connects field personnel, dispatch, supervision, and reporting to enforce audit-driven security protocols.
+                Simply increasing security hours does not guarantee better protection if coverage fails to align with your property’s actual operational rhythms. 
               </p>
               <p className={styles.bodyText}>
-                Using GPS tracking and digital checkpoint verification, the platform ensures guards actively inspect the high-risk zones, unlit areas, and secondary access points identified during your assessment. Real-time logging and digital incident reporting allow dispatchers to track officer movement continuously, verify route compliance, and deliver clear proof of coverage directly to property managers.
+                Secure Guard evaluates your site's daily activity patterns to align security hours directly with your highest-vulnerability periods, ensuring your resources are deployed where they deliver maximum protection rather than spread thin across static shifts.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ===== SECTION 7: Security Assessment Process (ProcessExplorer) ===== */}
-      <section className={styles.section} id="process" style={{ background: "var(--color-dark-blue, #1d2c48)", padding: "100px 0" }}>
+      {/* ===== 3. OPERATIONS (DARK) ===== */}
+      <section 
+        className={`${styles.section} ${styles.sectionDark}`} 
+        id="operations"
+        style={{
+          backgroundImage: `linear-gradient(rgba(29, 44, 72, 0.85), rgba(29, 44, 72, 0.85)), url('https://cms.secureguardservices.com/wp-content/uploads/2026/08/em11-2-1.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <div className="container">
-          <div className={styles.sectionHeader} style={{ margin: "0 auto 48px", textAlign: "center", maxWidth: "800px" }}>
-            <span className={styles.sectionTag}>Structured Evaluation</span>
-            <h2 className={styles.sectionTitle} style={{ marginBottom: "16px", color: "var(--color-white, #ffffff)" }}>
-              Security Assessment Process
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', marginBottom: '40px' }}>
+            <div className={styles.splitGrid} style={{ alignItems: 'center', gap: '60px' }}>
+              <div className={styles.sectionHeaderLeft} style={{ marginBottom: 0 }}>
+                <span className={`${styles.sectionTag} ${styles.sectionTagDark}`}>Efficiency</span>
+                <h2 className={`${styles.sectionTitle} ${styles.sectionTitleDark}`}>
+                  How We Optimize Your Security Spend
+                </h2>
+                <div className={`${styles.bodyText} ${styles.bodyTextDark}`}>
+                  <h4 style={{ color: 'var(--color-gold)', marginBottom: '8px' }}>Aligning Security with Site Activity</h4>
+                  <p style={{ marginBottom: '20px' }}>Secure Guard analyzes daily workflows, shift changes, delivery schedules, and foot/vehicle traffic to eliminate duplicated, underutilized, or poorly timed coverage hours. Rather than automatically cutting guard hours, we redirect your existing budget away from static, low-activity shifts and focus it directly on peak-vulnerability windows where a physical presence delivers the highest operational value.</p>
+                  
+                  <h4 style={{ color: 'var(--color-gold)', marginBottom: '8px' }}>Allocating Resources by Risk Level</h4>
+                  <p style={{ marginBottom: '20px' }}>Secure Guard evaluates your physical layout—from high-value equipment yards and restricted storage zones to routine perimeters and parking structures—to determine where continuous guard presence is necessary, where periodic mobile patrols suffice, and where surveillance technology offers the best coverage. Assigning security resources based on localized risk rather than rigid standard templates ensures your budget delivers maximum protection where it is needed most.</p>
+                  
+                </div>
+              </div>
+              <div className={styles.splitImageWrapper} style={{ height: '100%', minHeight: '400px', borderRadius: '16px', overflow: 'hidden' }}>
+                <Image 
+                  src="https://cms.secureguardservices.com/wp-content/uploads/2026/08/em11-2.webp" 
+                  alt="Optimize Spend" 
+                  fill
+                  className={styles.splitImage}
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+            </div>
+            <div className={styles.sectionHeaderLeft} style={{ marginBottom: 0, padding: '32px', background: 'rgba(255,255,255,0.03)', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', maxWidth: '100%' }}>
+              <h2 className={`${styles.sectionTitle} ${styles.sectionTitleDark}`} style={{ fontSize: '1.8rem' }}>
+                Technology & Personnel Integration
+              </h2>
+              <p className={`${styles.bodyText} ${styles.bodyTextDark}`}>
+                Existing cameras, access control systems, and monitoring tools deliver maximum value when seamlessly integrated with your physical security force. Secure Guard evaluates your property to determine where technology can maintain continuous observation and where human presence is essential for access control, visitor management, and direct response. 
+              </p>
+              <p className={`${styles.bodyText} ${styles.bodyTextDark}`} style={{ marginBottom: 0 }}>
+                By coordinating remote video monitoring, mobile patrols, and on-site officers into a unified network, we ensure your technology and personnel complement each other, eliminating redundant expenses while making your current security hardware work significantly harder.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 4. FEATURES (LIGHT) ===== */}
+      <section className={styles.section} id="features">
+        <div className="container">
+          <div className={styles.sectionHeaderCentered} style={{ marginBottom: '56px' }}>
+            <span className={styles.sectionTag}>Comprehensive Solutions</span>
+            <h2 className={styles.sectionTitle}>
+              Building the Right Security Combination
             </h2>
+            <p className={styles.bodyTextCentered}>
+              Secure Guard evaluates your unique layout, risk profile, and operating hours to deploy the exact mix of protection your property requires.
+            </p>
           </div>
           
+          <div className={styles.cardsGridFive}>
+            <div className={styles.featureCard} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '30px 20px' }}>
+              <div className={styles.featureCardIcon} style={{ width: '56px', height: '56px', marginBottom: '16px' }}>
+                <ShieldCheck size={28} />
+              </div>
+              <h3 className={styles.featureTitle} style={{ marginBottom: '10px', fontSize: '1.15rem' }}>On-Site Security Officers</h3>
+              <p className={styles.featureDesc} style={{ fontSize: '0.95rem' }}>Provide continuous visible deterrence, manage access gates, handle visitor screening, and deliver immediate on-scene response for high-risk zones and busy operational hours.</p>
+            </div>
+            
+            <div className={styles.featureCard} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '30px 20px' }}>
+              <div className={styles.featureCardIcon} style={{ width: '56px', height: '56px', marginBottom: '16px' }}>
+                <Car size={28} />
+              </div>
+              <h3 className={styles.featureTitle} style={{ marginBottom: '10px', fontSize: '1.15rem' }}>Mobile Patrols</h3>
+              <p className={styles.featureDesc} style={{ fontSize: '0.95rem' }}>Conduct scheduled or randomized physical inspections, perimeter checks, and door locks for expansive properties or lower-risk periods that do not require a full-time standing guard post.</p>
+            </div>
+            
+            <div className={styles.featureCard} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '30px 20px' }}>
+              <div className={styles.featureCardIcon} style={{ width: '56px', height: '56px', marginBottom: '16px' }}>
+                <Video size={28} />
+              </div>
+              <h3 className={styles.featureTitle} style={{ marginBottom: '10px', fontSize: '1.15rem' }}>Remote Video Monitoring</h3>
+              <p className={styles.featureDesc} style={{ fontSize: '0.95rem' }}>Delivers continuous, active visual oversight across key property vulnerabilities, allowing trained specialists to detect, verify, and intercept suspicious activity in real time.</p>
+            </div>
+            
+            <div className={styles.featureCard} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '30px 20px' }}>
+              <div className={styles.featureCardIcon} style={{ width: '56px', height: '56px', marginBottom: '16px' }}>
+                <Sun size={28} />
+              </div>
+              <h3 className={styles.featureTitle} style={{ marginBottom: '10px', fontSize: '1.15rem' }}>Solar Surveillance Towers</h3>
+              <p className={styles.featureDesc} style={{ fontSize: '0.95rem' }}>Supply standalone, elevated camera coverage, night visibility, and active deterrence lighting for expansive outdoor yards, remote parking lots, and unwired construction sites.</p>
+            </div>
+            
+            <div className={styles.featureCard} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '30px 20px' }}>
+              <div className={styles.featureCardIcon} style={{ width: '56px', height: '56px', marginBottom: '16px' }}>
+                <Smartphone size={28} />
+              </div>
+              <h3 className={styles.featureTitle} style={{ marginBottom: '10px', fontSize: '1.15rem' }}>SecureTrack Platform</h3>
+              <p className={styles.featureDesc} style={{ fontSize: '0.95rem' }}>Unifies on-site officers, field supervisors, 24/7 central dispatchers, and live camera feeds into a single coordinated management system to verify patrol rounds, log incidents, and give you complete portfolio transparency.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 5. HOW IT WORKS (DARK) ===== */}
+      <section className={`${styles.section} ${styles.sectionDark}`} id="process">
+        <div className="container">
+          <div className={styles.sectionHeaderCentered}>
+            <span className={`${styles.sectionTag} ${styles.sectionTagDark}`}>5-Step Evaluation</span>
+            <h2 className={`${styles.sectionTitle} ${styles.sectionTitleDark}`}>
+              Operational Security Review Process
+            </h2>
+            <p className={`${styles.bodyTextCentered} ${styles.bodyTextDark}`}>
+              Secure Guard conducts a structured, five-step evaluation to align your security program directly with how your facility functions in real-world conditions.
+            </p>
+          </div>
           <ProcessExplorer />
         </div>
       </section>
-      {/* ===== SECTION 8: Vulnerability Assessment to Security Strategy (Project 5 Layout) ===== */}
-      <section className={styles.floatingImageSection} id="strategy">
-        <div className="container">
-          <div className={styles.floatingImageGrid}>
-            <div className={styles.floatingImageWrapper}>
-              <Image 
-                src="https://cms.secureguardservices.com/wp-content/uploads/2026/09/14-6.png" 
-                alt="Security officers conducting a site assessment" 
-                fill 
-                style={{ objectFit: "cover" }}
-                sizes="(max-width: 992px) 100vw, 50vw"
-              />
-            </div>
-            
-            <div className={styles.floatingImageText}>
-              <div className={styles.sectionHeader} style={{ margin: "0 0 24px 0", textAlign: "left" }}>
-                <span className={styles.sectionTag} style={{ color: "#b89000", background: "rgba(254, 207, 49, 0.13)", borderColor: "rgba(254, 207, 49, 0.35)" }}>Actionable Intelligence</span>
-                <h2 className={styles.sectionTitle} style={{ marginBottom: "20px", color: "var(--color-dark-blue, #1d2c48)" }}>
-                  Vulnerability Assessment to Security <span style={{ color: "var(--color-gold, #fecf31)" }}>Strategy</span>
-                </h2>
-              </div>
-              <p className={styles.bodyText} style={{ color: "var(--color-dark-blue, #1d2c48)", marginBottom: 0 }}>
-                A vulnerability audit provides the concrete baseline needed to build a tailored security strategy rather than forcing a standardized package onto your property. Based on your site's specific findings, we deploy the exact mix of protection required, whether that means standing officers for continuous visible deterrence, mobile patrols for flexible after-hours checks, or solar surveillance towers and remote video monitoring for expansive outdoor perimeters.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-
-      {/* ===== SECTION 9: The Secure Guard Difference ===== */}
-      <section className={styles.standardSection} id="difference">
-        <div className={styles.standardPatternLeft}>
-          <FloatingShapes shapeCount={18} />
-        </div>
-        <div className={styles.standardPatternRight}>
-          <FloatingShapes shapeCount={18} />
-        </div>
-        <div className="container">
-          <div className={styles.standardHeader} style={{ marginBottom: 0, maxWidth: "100%" }}>
-            <span className={styles.sectionTag}>Integrated Approach</span>
-            <h2 className={styles.sectionTitle}>The Secure Guard Difference</h2>
-            <p className={styles.standardSubtitle} style={{ maxWidth: "100%", textAlign: "center" }}>
-              Secure Guard treats property security as an integrated operational system rather than a collection of standalone services. By evaluating your physical layout, traffic flow, operating schedules, and existing security measures together, we deliver practical recommendations based on how your property actually functions.
+      {/* ===== 6. WHY CHOOSE SECURE GUARD (DARK) ===== */}
+      <section className={`${styles.section} ${styles.sectionDark} ${styles.patternSection}`} id="why-secure-guard">
+        <div className={styles.patternLeft}></div>
+        <div className={styles.patternRight}></div>
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <div className={styles.sectionHeaderCentered} style={{ maxWidth: '900px' }}>
+            <span className={`${styles.sectionTag} ${styles.sectionTagDark}`}>Cost Efficiency</span>
+            <h2 className={`${styles.sectionTitle} ${styles.sectionTitleDark}`}>
+              The Secure Guard Difference
+            </h2>
+            <p className={`${styles.bodyTextCentered} ${styles.bodyTextDark}`}>
+              Secure Guard rejects rigid, template-based security in favor of custom strategies built around your site's exact layout, risk factors, and daily operating cycles. Rather than blindly adding costly guard hours or redundant hardware, we evaluate your existing setup to maximize budget efficiency and focus resources where vulnerabilities peak. By unifying physical officers, mobile patrols, smart surveillance, 24/7 central dispatch, and digital reporting into a single connected system, we deliver streamlined, high-impact protection for single properties and multi-location portfolios.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ===== COVERAGE SECTION ===== */}
       <CoverageSection />
 
-      {/* ===== SECTION 10: FAQ ===== */}
+      {/* ===== 7. FAQ (LIGHT) ===== */}
       <section className={styles.faqSection} id="faq">
         <div className="container">
           <div className={styles.sectionHeader}>
@@ -268,8 +247,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== PERFORMANCE REVIEW FORM ===== */}
-      <PerformanceReviewForm />
+      {/* ===== PRE-FOOTER CTA ===== */}
+      <PreFooterCTA />
 
       <Footer />
       <BackToTop />

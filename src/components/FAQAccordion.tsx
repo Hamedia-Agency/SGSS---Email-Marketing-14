@@ -1,84 +1,81 @@
-"use client";
+'use client';
 
-import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import React, { useState } from 'react';
 import styles from './FAQAccordion.module.css';
+import { ChevronDown } from 'lucide-react';
 
 const faqs = [
   {
-    question: "What is a site vulnerability audit, and what does it evaluate?",
-    answer: "A site vulnerability audit is a structured review of your property's physical environment, operating conditions, and active security measures. Secure Guard evaluates both physical and operational security—including secondary access points, parking lighting, loading docks, patrol route predictability, camera coverage, visitor traffic flow, and after-hours procedures—to ensure your setup addresses real-world risks."
+    question: "What is a security cost optimization review?",
+    answer: "An operational review evaluates how your current security budget, guard schedules, post orders, and technology align with your facility's actual daily activity and risk profile. Rather than assuming more guard hours equal better security, we identify coverage redundancies, quiet-period waste, and unaddressed gap periods so every dollar delivers maximum protection."
   },
   {
-    question: "Is there any cost or obligation tied to requesting a security assessment walkthrough?",
-    answer: "No. We offer an initial site evaluation to review your property layout, identify visual blind spots, and discuss potential operational improvements without any financial commitment or obligation."
+    question: "Does cost optimization mean simply cutting security guards or reducing protection?",
+    answer: "No. The objective is strategic budget alignment, not blind cost-cutting. We eliminate paid guard hours during low-vulnerability periods and reallocate those existing funds toward peak-risk windows, mobile patrols, or hybrid video surveillance. This tightens site security while lowering or maintaining overall operational costs."
   },
   {
-    question: "How long does a typical walkthrough take, and will it interrupt daily operations?",
-    answer: "A walkthrough typically takes between 1 and 2 hours, depending on the size of your property. Our specialists conduct the review quietly in the background without causing disruptions to your employees, tenants, or daily business operations."
+    question: "Can Secure Guard evaluate our site while our current security provider contract is active?",
+    answer: "Yes. You do not need to alter or cancel your current security arrangement to request a review. Secure Guard conducts an independent evaluation of your physical layout, guard schedules, and post orders, giving you an objective baseline of where your budget is performing effectively and where coverage can be optimized."
   },
   {
-    question: "Do we need to replace our current security provider or camera system to get an assessment?",
-    answer: "No. Our objective is to evaluate your site objectively. We focus on identifying security gaps and showing you how to make your existing setup, guard force, and camera positioning more effective, regardless of what equipment or provider you currently use."
+    question: 'What does "architectural efficiency" mean in property security?',
+    answer: "Architectural efficiency means designing security directly around your property's unique physical blueprint and daily operational behavior. We evaluate entry points, loading docks, equipment yards, camera sightlines, and foot/vehicle traffic as an integrated system—ensuring physical officers, mobile patrols, and surveillance technology support each other without redundant coverage."
   },
   {
-    question: "Will the assessment automatically recommend hiring on-site security guards?",
-    answer: "Not necessarily. The appropriate solution depends entirely on your site's specific vulnerabilities and operational goals. Recommendations may involve mobile patrols, camera repositioning, solar surveillance towers, remote video monitoring, or simple procedural updates rather than full-time standing officers."
+    question: "Can our existing cameras and security hardware be included in the review?",
+    answer: "Yes. We evaluate your existing camera infrastructure, access controls, and monitoring equipment as part of the total security ecosystem. Our objective is to maximize the utility of your functional hardware and integrate it into our operational network, avoiding unnecessary equipment replacement costs."
   },
   {
-    question: "Can Secure Guard assess large facilities or properties with multiple buildings?",
-    answer: "Yes. We evaluate multi-building campuses, industrial parks, commercial plazas, and residential communities based on their unique layouts, access points, traffic flows, and localized risk factors."
+    question: "What types of facilities benefit most from an operational security review?",
+    answer: "Any facility with fluctuating activity cycles benefits from an evaluation. This includes industrial facilities, commercial real estate, construction sites, logistics centers, multi-family communities, healthcare campuses, and multi-location commercial portfolios throughout California."
   },
   {
-    question: "Can the assessment identify vulnerabilities during off-hours and shift changes?",
-    answer: "Yes. We analyze how security risks shift during evenings, overnight periods, weekends, holidays, and shift changes to ensure your coverage addresses periods when normal property activity decreases."
-  },
-  {
-    question: "What do we receive after the security walkthrough is completed?",
-    answer: "You will receive a clear, plain-language breakdown of your site's physical vulnerabilities and operational gaps, along with prioritized recommendations on how to resolve them efficiently."
-  },
-  {
-    question: "Is this assessment a substitute for official engineering or regulatory risk audits?",
-    answer: "No. A Secure Guard site vulnerability audit evaluates security operations and practical threat mitigation from a security-service perspective. It is not a substitute for specialized engineering, life-safety, regulatory, insurance, or law-enforcement compliance audits."
+    question: "Is there any cost or obligation tied to requesting an operational security review?",
+    answer: "No. Secure Guard offers a no-obligation security assessment with zero financial commitment. We review your layout, examine your current security structure, and outline practical strategy recommendations to eliminate wasted spend and enhance site protection."
   }
 ];
 
-export default function FAQAccordion() {
+export const FAQAccordion = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const toggleOpen = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const toggleAccordion = (index: number) => {
+    setOpenIndex((prev) => (prev === index ? null : index));
   };
 
   return (
     <div className={styles.accordionContainer}>
-      {faqs.map((faq, index) => {
-        const isOpen = openIndex === index;
-        return (
-          <div 
-            key={index} 
-            className={`${styles.accordionItem} ${isOpen ? styles.open : ''}`}
-          >
-            <button 
-              className={styles.accordionHeader} 
-              onClick={() => toggleOpen(index)}
-              aria-expanded={isOpen}
-            >
-              <h3 className={styles.accordionTitle}>{faq.question}</h3>
-                            <span className={`${styles.icon} ${isOpen ? styles.iconOpen : ''}`}>
-                <ChevronDown size={20} />
-              </span>
-            </button>
+      <div className={styles.accordionList}>
+        {faqs.map((faq, index) => {
+          const isOpen = openIndex === index;
+          return (
             <div 
-              className={`${styles.accordionContent} ${isOpen ? styles.accordionContentOpen : ''}`}
+              key={index} 
+              className={`${styles.accordionItem} ${isOpen ? styles.itemOpen : ''}`}
             >
-              <div className={styles.accordionContentInner}>
-                <p className={styles.accordionText}>{faq.answer}</p>
+              <button
+                className={styles.accordionHeader}
+                onClick={() => toggleAccordion(index)}
+                aria-expanded={isOpen}
+              >
+                <span className={styles.accordionTitle}>{faq.question}</span>
+                <span className={styles.accordionIconWrap}>
+                  <ChevronDown 
+                    size={20} 
+                    className={`${styles.accordionIcon} ${isOpen ? styles.iconRotated : ''}`} 
+                  />
+                </span>
+              </button>
+              <div 
+                className={`${styles.accordionContent} ${isOpen ? styles.contentOpen : ''}`}
+              >
+                <div className={styles.accordionContentInner}>
+                  <p className={styles.accordionText}>{faq.answer}</p>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
-}
+};
